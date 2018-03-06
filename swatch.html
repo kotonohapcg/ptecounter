@@ -1,0 +1,60 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ptesw</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+
+    <script type="text/javascript">
+        
+        var time = 0;
+        var tm = 0;
+        //sum
+        function run(){
+            tm = setInterval("disp()", 10);
+        }
+
+        function stop(){
+            clearInterval(tm);
+        }
+        
+        function disp(){
+            ++time;
+            //mSec
+            var mSec = time;
+            if(mSec < 10){
+                mSec = "0" + String(mSec);
+            }
+        
+            if(mSec > 99){
+                mSec = String(mSec);
+                mSec = mSec.substr(mSec.length-2);
+            }
+        
+            //sec
+            var sec = Math.floor((time / 100) % 60 );
+            if(sec < 10){
+                sec = "0" + String(mSec);
+            }
+        
+            //min
+            var min = Math.floor((time / 100) / 60);
+
+            //print
+            document.form_sw.count.value = min + ":" + sec + ":" + mSec;
+        }
+    </script>
+</head>
+<body>
+        <form name="form_sw">
+            <input type="button" value="start" onclick="run()" style="width:300px; height:300px">
+            <br>
+            <input type="button" value="stop" onclick="stop()" style="width:300px; height:300px">
+            <br>
+
+            <input type="text" name="count" size="10" value="00:00:00">
+            <br>
+        </form>
+    
+</body>
+</html>
